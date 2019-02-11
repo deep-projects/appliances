@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+set -eu
+
+IMAGE=docker.io/deepprojects/cuda-fuse-nfs-sshfs:9.0
+
+docker build --pull -t $IMAGE .
+docker push $IMAGE
