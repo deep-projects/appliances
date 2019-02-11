@@ -4,7 +4,7 @@ ENV LD_LIBRARY_PATH ${LD_LIBRARY_PATH}:/usr/local/lib/x86_64-linux-gnu
 ENV PATH ${PATH}:/root/.local/bin
 
 RUN apt-get update \
-&& apt-get install -y curl cmake pkg-config udev ninja-build libglib2.0-dev xz-utils python3-pip \
+&& apt-get install -y openssh-client curl cmake pkg-config udev ninja-build libglib2.0-dev xz-utils python3-pip \
 && pip3 install --user meson \
 && cd \
 && curl -OL https://github.com/libfuse/libfuse/releases/download/fuse-3.4.1/fuse-3.4.1.tar.xz \
