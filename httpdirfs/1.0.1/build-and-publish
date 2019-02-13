@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+set -eu
+
+IMAGE=docker.io/deepprojects/httpdirfs:1.0.1
+
+docker build --pull -t ${IMAGE} .
+docker run --rm ${IMAGE} httpdirfs --version
+docker push ${IMAGE}
