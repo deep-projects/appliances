@@ -4,7 +4,7 @@ ENV PATH ${PATH}:/root/.local/bin
 
 RUN apt-get update \
 && apt-get install -y curl fuse make gcc openssh-client ninja-build libgumbo-dev \
-libfuse-dev libssl-dev libcurl4-openssl-dev  python3-pip pkg-config libglib2.0-dev \
+libfuse-dev libssl-dev libcurl4-openssl-dev python3-pip pkg-config libglib2.0-dev \
 && pip3 install --user meson \
 && cd \
 && curl -LO https://github.com/fangfufu/httpdirfs/archive/v1.0.1.tar.gz \
