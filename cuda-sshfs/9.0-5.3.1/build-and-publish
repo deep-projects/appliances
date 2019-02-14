@@ -4,5 +4,5 @@ set -eu
 
 IMAGE=docker.io/deepprojects/cuda-sshfs:9.0-3.5.1
 
-docker build --pull -t $IMAGE .
-docker push $IMAGE
+docker build --pull -t ${IMAGE} .
+docker push ${IMAGE}

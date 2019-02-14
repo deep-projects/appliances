@@ -4,7 +4,7 @@ set -eu
 
 IMAGE=docker.io/deepprojects/cuda-sshfs-httpdirfs:9.0-2.10-1.0.1
 
-docker build --pull -t $IMAGE .
+docker build --pull -t ${IMAGE} .
 docker run --rm ${IMAGE} sshfs --version
 docker run --rm ${IMAGE} httpdirfs --version
-docker push $IMAGE
+docker push ${IMAGE}
