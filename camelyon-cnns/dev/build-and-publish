@@ -5,5 +5,4 @@ set -eu
 IMAGE=docker.io/deepprojects/camelyon-cnns:dev
 
 docker build --pull -t ${IMAGE} .
-docker run --rm -u 1000:1000 ${IMAGE} camelyon-cnns
-#docker push ${IMAGE}
+docker push ${IMAGE}

@@ -1,4 +1,4 @@
-FROM nvidia/cuda:9.0-base
+FROM nvidia/cuda:9.0-cudnn7-runtime
 
 ENV LD_LIBRARY_PATH ${LD_LIBRARY_PATH}:/usr/local/lib/x86_64-linux-gnu
 ENV PATH ${PATH}:/root/.local/bin
