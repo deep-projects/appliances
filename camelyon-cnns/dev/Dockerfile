@@ -22,6 +22,8 @@ RUN cd \
 && curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | python \
 && pip3 install --user --upgrade https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow_gpu-1.12.0-cp35-cp35m-linux_x86_64.whl
 
+RUN echo "3"
+
 RUN cd \
 && git clone https://github.com/deep-projects/camelyon-cnns.git \
 && cd camelyon-cnns \
