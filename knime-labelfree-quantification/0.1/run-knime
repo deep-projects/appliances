@@ -1,0 +1,41 @@
+#!/usr/bin/env python3
+import os
+from subprocess import call
+from argparse import ArgumentParser
+
+CONFIGURATION_DIR = '/output/knime_tmp/configuration'
+KNIME_TMP_DIR = '/output/knime_tmp'
+WORKFLOW_DIR = '/output/knime_tmp/workflow'
+OUTPUT_DIR = '/output'
+
+parser = ArgumentParser(description='KNIME Labelfree Quantification.')
+parser.add_argument(
+   'input_dir', action='store', type=str, metavar='INPUT_DIR_PATH',
+   help='Input directory containing datasets and databases subdirectories.'
+)
+parser.add_argument(
+   'database_name', action='store', type=str, metavar='DATABASE_NAME',
+   help='Name of database file located in databases subdirectory.'
+)
+args = parser.parse_args()
+
+datasets_dir = os.path.join(args.input_dir, 'datasets')
+database_file = os.path.join(args.input_dir, 'databases', args.database_name)
+
+os.chdir('/output/knime_tmp/')
+
+command = [
+    f'{os.environ["KNIME_DIR"]}/knime -nosplash -nosave -clean -reset',
+    f'-configuration {CONFIGURATION_DIR}',
+    f'-data {KNIME_TMP_DIR}',
+    f'-user {KNIME_TMP_DIR}',
+    '-application org.knime.product.KNIME_BATCH_APPLICATION',
+    f'-workflowDir="{WORKFLOW_DIR}"',
+    f'-workflow.variable=DATASETS_DIR,{datasets_dir},String',
+    f'-workflow.variable=OUTPUT_DIR,{OUTPUT_DIR},String',
+    f'-workflow.variable=DATABASE,{database_file},String 2>&1 | tee {OUTPUT_DIR}/execute.log'
+]
+
+command = ' '.join(command)
+
+exit(call(command, shell=True))
