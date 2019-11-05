@@ -5,7 +5,7 @@ ENV LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/lib
 
 RUN apt-get update \
 && apt-get install -y libjpeg-dev libtiff-dev libglib2.0-dev libcairo2-dev ibgdk-pixbuf2.0-dev libxml2-dev \
-libsqlite3-dev valgrind zlib1g-dev libopenjp2-tools libopenjp2-7-dev curl python3-venv python3-dev python3-pip \
+libsqlite3-dev valgrind zlib1g-dev libopenjp2-tools libopenjp2-7-dev curl python3-venv python3-dev python3-pip sshfs \
 && useradd -ms /bin/bash cc \
 && cd \
 && curl -LO https://github.com/openslide/openslide/releases/download/v3.4.1/openslide-3.4.1.tar.gz \
@@ -28,7 +28,7 @@ RUN mkdir -p /home/cc/.local/bin
 RUN python3 -m venv /home/cc/.local/red \
 && . /home/cc/.local/red/bin/activate \
 && pip install wheel \
-&& pip install red-connector-http==1.0 red-connector-ssh==1.1 red-connector-xnat==1.0 red-connector-ftp==0.3.0 \
+&& pip install red-connector-http==1.0 red-connector-ssh==1.2 red-connector-xnat==1.0 red-connector-ftp==1.0 \
 && ln -s /home/cc/.local/red/bin/red-connector-* /home/cc/.local/bin
 
 # install app
