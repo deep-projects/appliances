@@ -2,7 +2,7 @@
 
 set -eu
 
-IMAGE=docker.io/deepprojects/camelyon-cnns:0.1.2
+IMAGE=docker.io/deepprojects/camelyon-cnns:0.2-gpu
 
 docker build --pull -t ${IMAGE} .
 docker run --rm -u 1000:1000 ${IMAGE} red-connector-http --version

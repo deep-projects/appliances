@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+set -eu
+
+IMAGE=docker.io/deepprojects/camelyon-cnns:0.2
+
+docker build --pull -t ${IMAGE} .
+docker run --rm -u 1000:1000 ${IMAGE} red-connector-http --version
+docker run --rm -u 1000:1000 ${IMAGE} red-connector-ssh --version
+docker run --rm -u 1000:1000 ${IMAGE} red-connector-xnat-http --version
+docker run --rm -u 1000:1000 ${IMAGE} red-connector-ftp --version
+docker run --rm -u 1000:1000 ${IMAGE} sshfs --version
+docker run --rm -u 1000:1000 ${IMAGE} fusermount --version
+docker push ${IMAGE}

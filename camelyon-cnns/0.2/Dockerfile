@@ -1,4 +1,4 @@
-FROM docker.io/nvidia/cuda:10.0-cudnn7-runtime-ubuntu18.04
+FROM docker.io/ubuntu:18.04
 
 RUN apt-get update \
 && apt-get install -y python3-venv python3-pip sshfs curl \
@@ -20,8 +20,6 @@ RUN python3 -m venv /home/cc/.local/red \
 
 # install app
 RUN cd \
-&& curl -fLO https://github.com/deep-projects/camelyon-cnns/releases/download/0.1/camelyon_cnns-0.1-py3-none-any.whl \
-&& pip3 install --user --upgrade tensorflow-gpu==1.13.1 camelyon_cnns-0.1-py3-none-any.whl \
-&& rm camelyon_cnns-0.1-py3-none-any.whl
-
-#ENV PYTHONPATH="/home/cc/.local/lib/python3.5/site-packages:/usr/local/lib/python3.5/dist-packages:${PYTHONPATH}"
+&& curl -fLO https://github.com/deep-projects/camelyon-cnns/releases/download/0.2/camelyon_cnns-0.2-py3-none-any.whl \
+&& pip3 install --user --upgrade tensorflow==1.13.1 camelyon_cnns-0.2-py3-none-any.whl \
+&& rm camelyon_cnns-0.2-py3-none-any.whl
