@@ -1,0 +1,9 @@
+
+#!/usr/bin/env bash
+
+set -eu
+
+IMAGE=docker.io/deepprojects/camelyon-cnns:tests
+
+docker build --pull -t ${IMAGE} .
+docker push ${IMAGE}
